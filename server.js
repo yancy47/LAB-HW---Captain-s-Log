@@ -1,3 +1,6 @@
+// Require dotenv to setup environment variables in our server
+require('dotenv').config()
+
 // Load express
 const express = require('express')
 
@@ -6,17 +9,8 @@ const app = express()
 
 const PORT = 8080 
 
-// Load our clothing data from models folder
-const capris = require('./models/capris')
-const dresses = require('./models/dresses')
-const earings = require('./models/earings')
-const hats = require('./models/hats')
-const pants = require('./models/pants')
-const robes = require('./models/robes')
-const shirts = require('./models/shirts')
-const shoes = require('./models/shoes')
-const socks = require('./models/socks')
-
+// Load our log routes
+const logRoutes = require('./routes/logRoutes')
 
 // Load the create engine -> (npm install jsx-view-engine react react-dom)
 const { createEngine } = require('jsx-view-engine')
@@ -27,8 +21,15 @@ app.set('view engine', 'jsx')
 // Create the engine and accept files ending in jsx
 app.engine('jsx', createEngine())
 
-// Load the create engine -> (npm install jsx-view-engine react react-dom)
-const { createEngine } = require('jsx-view-engine')
+// Connect our routes to our express app
+app.use('/log', logRoutes)
 
-// Load our fruit routes
-const fruitRoutes = require('./routes/fruitRoutes')
+// Setup a "new" route 
+app.get('/log/new', (req, res) => {
+    res.send('new')
+})
+
+// Listen to the given port
+app.listen(PORT, () => {
+    console.log('Listening to the port: ' + PORT)
+})

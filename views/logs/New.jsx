@@ -1,9 +1,9 @@
 import React from "react";
 
-function New(){ // props passed is pokemon 
+function New(props){ // props passed is logs
     return(
         <div>
-            <h1>New Pokemon</h1>
+            <h1>New View Log</h1>
             <form action="/logs" method ='POST'>
                 <label htmlFor="ttl">Title:</label><br />
                 <input type="text" id="ttl" name="title" /><br /><br />
@@ -14,7 +14,7 @@ function New(){ // props passed is pokemon
                 <label htmlFor="shp">Ship Is Broken:</label>
                 <input type="checkbox" id="shp" name="shipIsBroken" /><br /><br />
 
-                <label htmlFor="sub">Submit</label><br />
+                {/* <label htmlFor="sub">Submit</label><br /> */}
                 <input type="submit" id="sub" name="submit" /><br /><br />
             
                 {/* <button>Submit</button> */}
